@@ -9,7 +9,7 @@ df.head()
 df["Data da Medição"] = pd.to_datetime(df["Data da Medição"], format='%d/%m/%Y')
 # %%
 df.dtypes
-
+df.shape
 # %%
 
 # funcao para separar por mes 
@@ -32,19 +32,33 @@ meses = separar_por_mes(df, 'Data da Medição',[
       'Defluência (m³/s)'
 ])
 
+## Renomenado as colunas
 
-meses
+meses.columns = [
+    'Ano',
+    'Meses',
+    'Cota (m',
+    'Volume Útil (hm³)',
+    'Volume Útil (%)',
+    'Afluência (m³/s)',
+    'Defluência (m³'
+
+]
+
+
+
+
+
 
 # %%
-
-## Pesquisa em Ano e meses 
-Janeiro = meses[(meses['Ano'] == 2020) & (meses['mes'] == 1)]
-Janeiro
 # %%
 
 
 # Projeto pegando o ano de 2020 
-
+## Pesquisa em Ano e meses 
+Janeiro = meses[(meses['Ano'] == 2020) & (meses['Meses'] == 1)]
+Janeiro
+# %%
 Ano2020 = meses[meses['Ano'] == 2020]
 Ano2020
 # %%
